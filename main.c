@@ -252,28 +252,28 @@ int execute(char **args)
 int path (char **args)
 {
 
-    //REtriving path directory using getenv
+    /* REtriving path directory using getenv */
 	char *path;
 	char *token;
 	char command_path [100];
 
 	path = getenv("PATH");
 
-	//tokenize the path variale to otain individual directory paths
+	/* tokenize the path variale to otain individual directory paths */
 
 	token = strtok(path, ":");
 	while ( token != NULL)
 	{
-		//construct the full path of the command using the strcpy, strcat functions
+		/* construct the full path of the command using the strcpy, strcat functions */
 		strcpy(command_path , token);
 		strcat(command_path, "/");
 		strcat(command_path, args[0]);
 
-		//check if the command exists and is executable
+		/* check if the command exists and is executable */
 
 			if (access(command_path, X_OK) == 0)
 			{
-				//execute the command using execvp
+				/* execute the command using execvp */
 				args[0] = command_path;
 				if (execvp(args[0], args) == -1)
 				{
@@ -282,10 +282,10 @@ int path (char **args)
 				}
 			}
 
-		//get the next directory path token
+		/* get the next directory path token */
 		token = strtok(NULL, ":");
 	}
-	//print error message using perror
+	/* print error message using perror */
 	perror("command not found");
 	return (1);
 
