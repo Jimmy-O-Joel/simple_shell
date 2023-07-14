@@ -21,6 +21,7 @@ int get_builtin(char *cmd);
 int exit_shell(char **args);
 int cd_shell(char **args);
 int get_help(char **args);
-int path (char **args);
+int path(char **args);
+int env_shell(char **args);
 
 #endif

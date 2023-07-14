@@ -168,6 +168,26 @@ int exit_shell(char **args)
   return 0;
 }
 
+
+/**
+*env_shell - command execution of environment variables
+*@args:array of argument strings
+*Return:0 on success, 1 on failure
+*/
+
+int env_shell(char **args)
+{
+{
+	if (execvp(args[0], args) == -1)
+	{
+		perror("execvp");
+		return (1);
+	}
+
+	perror("command not found");
+	return (1);
+}
+
 /**
 *launch_shell - launches the shell
 *@args: array of argument strings
@@ -245,11 +265,11 @@ int execute(char **args)
 //finding PATH
 /**
 *path - searches in $PATH for an executable command
-*@args: parsed input
-*Return: 0 on success, 1 on failure
+*@args:array of argument strings
+*Return:0 on success, 1 on failure
 */
 
-int path (char **args)
+int path(char **args)
 {
 
     /* REtriving path directory using getenv */
