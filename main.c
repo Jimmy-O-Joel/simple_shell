@@ -6,7 +6,8 @@
 const char *builtin_str[] = {"cd","exit\n","help\n"};
 
 int (*builtin_func[]) (char **) = {
-    &cd_shell
+    &cd_shell,
+    &exit_shell
 };
 
 /**
