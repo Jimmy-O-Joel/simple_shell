@@ -55,7 +55,7 @@ void prompt(void)
 /**
 *read_line - function that reads a line from the user
 *
-*@Return:pointer to a string with line content
+*Return:pointer to a string with line content
 */
 
 char *read_line(void)
@@ -90,7 +90,7 @@ char *read_line(void)
 *parser - parse an array of string into individual tokens
 *@line:array of string to be tokenized
 *
-*@Return: pointer to an array
+*Return: pointer to an array
 */
 char **parser(char *line)
 
@@ -131,7 +131,7 @@ char **parser(char *line)
 /**
 *execute - function that executes commands
 *@args:array of argument strings 
-*@Return:
+*Return:
 */
 
 int execute(char **args)
