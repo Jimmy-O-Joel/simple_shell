@@ -14,7 +14,7 @@ char **parser(char *line)
 	char **token_holder;
 	char *token;
 
-	token_holder = (char**)malloc(buf_size * sizeof(char *));
+	token_holder = (char **)malloc(buf_size * sizeof(char *));
 	if (token_holder == NULL)
 	{
 		return (NULL);
@@ -25,10 +25,10 @@ char **parser(char *line)
 	{
 		token_holder[i] = token;
 		i++;
-		if(i >= buf_size)
+		if (i >= buf_size)
 		{
-			buf_size +=buf_size;
-			token_holder = realloc(token_holder, buf_size *sizeof(char*));
+			buf_size += buf_size;
+			token_holder = realloc(token_holder, buf_size * sizeof(char *));
 			if (token_holder == NULL)
 			{
 				return (NULL);

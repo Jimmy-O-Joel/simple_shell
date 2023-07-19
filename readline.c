@@ -11,10 +11,10 @@ char *read_line(void)
 	char *line = NULL;
 	size_t buffer_size = 0;
 	ssize_t chars_read;
-	
+
 	chars_read = getline(&line, &buffer_size, stdin);
 
-	if (chars_read == - 1)
+	if (chars_read == -1)
 	{
 		if (feof(stdin))
 		{
@@ -24,10 +24,10 @@ char *read_line(void)
 		else
 		{
 			free(line);
-			perror ("Error while reading input");
+			perror("Error while reading input");
 			exit(EXIT_FAILURE);
 		}
 	}
 
-	return(line);
+	return (line);
 }

@@ -10,14 +10,13 @@ void prompt(void)
 {
 	const char *prompt = "$";
 	ssize_t count = 0;
-	char * line;
+	char *line;
 	char **args;
 	int status;
 
 
-	do
-	{
-		count = write (1, prompt, strlen(prompt));
+	do {
+		count = write(1, prompt, strlen(prompt));
 		if (count == -1)
 		{
 			perror("Error writing to stdout");
@@ -30,5 +29,5 @@ void prompt(void)
 
 		free(line);
 		free(args);
-	}while (status);
+	} while (status);
 }
