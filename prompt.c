@@ -26,7 +26,7 @@ void prompt(void)
 
 		line = read_line();
 		args = parser(line);
-		status = exec_line(args);
+		status = execute(args);
 
 		free(line);
 		free(args);

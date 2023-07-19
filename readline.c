@@ -29,5 +29,7 @@ char *read_line(void)
 		}
 	}
 
+	line[strcspn(line, "\n")] = '\0';
+
 	return(line);
 }

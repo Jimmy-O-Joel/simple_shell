@@ -1,41 +1,39 @@
 #include "shell.h"
 
+/* Built-in command names and corresponding functions */
+
+const char *builtin_str[] = {"cd","exit","help"};
+
+int (*builtin_func[]) (char **) = {
+    &cd_shell,
+    &exit_shell
+};
+
 /**
-*execute - executes the commands
-*@args: array of argument strings
-*Return: always success
+*execute - function that executes commands
+*@args:array of argument strings
+*Return:
 */
 
 int execute(char **args)
 {
-    pid_t pid, wpid;
-    int status;
-    
-    pid = fork();
-    
-    if (pid == 0)
+
+	int i;
+	int equal;
+	path(args); /*searches in path for an exe */
+    if (args[0] == NULL)
     {
-        /* Child process */
-        if (execv(args[0], args) == -1)
+        return 1;  /* Empty command */
+    }
+
+    for (i = 0; i < sizeof(builtin_str) / sizeof(char *); i++)
+    {
+        if (strcmp(builtin_str[i], args[0]) == 0)
         {
-            perror("lsh");
+            return (*builtin_func[i])(args);
         }
-        exit(EXIT_FAILURE);
+
     }
-    else if (pid < 0)
-    {
-        /* Error forking */
-        perror("lsh");
-    }
-    else
-    {
-        /* Parent process */
-        do
-        {
-            wpid = waitpid(pid, &status, WUNTRACED);
-        }
-        while (!WIFEXITED(status) && !WIFSIGNALED(status));
-    }
-    
-    return 1;
+
+    return launch_shell(args);
 }

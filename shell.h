@@ -12,27 +12,6 @@
 #define TOK_BUFSIZE 1024
 
 /**
- * struct data - struct that contains all relevant data on runtime
- * @av: argument vector
- * @input: command line written by the user
- * @args: tokens of the command line
- * @status: last status of the shell
- * @counter: lines counter
- * @_environ: environment variable
- * @pid: process ID of the shell
- */
-typedef struct data
-{
-	char **av;
-	char *input;
-	char **args;
-	int status;
-	int counter;
-	char **_environ;
-	char *pid;
-} sh_data;
-
-/**
  * struct builtin_s - Builtin struct for command argument.
  * @name: The name of the command builtin
  * @f: data type pointer function.
@@ -50,7 +29,7 @@ typedef struct builtin_s
 char *read_line(void);
 char **parser(char *line);
 int execute(char **args);
-
+int launch_shell(char **args);
 int get_help(char **args);
 int path(char **args);
 int env_shell(char **args);
