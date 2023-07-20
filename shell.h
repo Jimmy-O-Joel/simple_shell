@@ -54,7 +54,11 @@ int execute(char **args);
 int get_help(char **args);
 int path(char **args);
 int env_shell(char **args);
+
+/*getline */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream);
+static ssize_t read_characters(char **lineptr, size_t *n, FILE *stream);
+static void resize_buffer(char **lineptr, size_t *n);
 
 /* ----Refactored prototypes------- */
 void prompt(void);
