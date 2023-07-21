@@ -6,8 +6,8 @@
  * @datash: data relevant (status and args)
  * Return: 0 on success.
  */
-
-int exit_shell(char **args)
+ 
+int exit_shell(char **args, char **_environ)
 {
 	return (0);
 }

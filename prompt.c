@@ -6,7 +6,7 @@
 *Return: void
 */
 
-void prompt(void)
+void prompt(char **_environ)
 {
 	const char *prompt = "$";
 	ssize_t count = 0;
@@ -25,7 +25,7 @@ void prompt(void)
 
 		line = read_line();
 		args = parser(line);
-		status = exec_line(args);
+		status = execute(args, _environ);
 
 		free(line);
 		free(args);
