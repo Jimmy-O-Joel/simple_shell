@@ -41,14 +41,14 @@ int set_env(const char *name, const char *value, char **_environ)
 
     if (name == NULL || value == NULL)
     {
-        // Invalid arguments, return failure
+        /* Invalid arguments, return failure */
         return -1;
     }
 
     name_len = strlen(name);
     value_len = strlen(value);
 
-    // Allocate memory for the new environment variable
+    /* Allocate memory for the new environment variable*/
     new_env_var = malloc(name_len + value_len + 2);
     if (new_env_var == NULL)
     {
@@ -56,24 +56,24 @@ int set_env(const char *name, const char *value, char **_environ)
         return -1;
     }
 
-    // Create the new environment variable string: name=value\0
+    /* Create the new environment variable string: name=value\0 */
     snprintf(new_env_var, name_len + value_len + 2, "%s=%s", name, value);
 
-    // Find if the environment variable already exists
+    /* Find if the environment variable already exists */
     for (i = 0; _environ[i] != NULL; i++)
     {
         var_env = _environ[i];
 
         if (strncmp(var_env, name, name_len) == 0 && var_env[name_len] == '=')
         {
-            // Update the existing environment variable
+            /* Update the existing environment variable*/
             free(_environ[i]);
             _environ[i] = new_env_var;
             return 1;
         }
     }
 
-    // If the environment variable does not exist, add it to the environment
+    /* If the environment variable does not exist, add it to the environment8*/
     _environ[i] = new_env_var;
     _environ[i + 1] = NULL;
 

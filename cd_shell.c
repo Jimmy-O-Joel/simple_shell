@@ -18,7 +18,7 @@ int cd_shell(char **args, char **_environ)
 
     if (dir == NULL)
     {
-        // If no argument provided, go to the home directory
+        /* If no argument provided, go to the home directory*/
         cd_home(_environ);
         return 1;
     }
@@ -30,33 +30,33 @@ int cd_shell(char **args, char **_environ)
 
     if (!ishome || !ishome2 || !isddash)
     {
-        // Handle special cases: cd ~, cd $HOME, cd --
+        /* Handle special cases: cd ~, cd $HOME, cd -- */
         cd_home(_environ);
         return 1;
     }
 
     if (_strcmp("-", dir) == 0)
     {
-        // Handle special case: cd -
+        /* Handle special case: cd - */
         cd_previous(_environ);
         return 1;
     }
 
     if (isdotdot)
     {
-        // Handle special case: cd ..
+        /* Handle special case: cd .. */
         cd_dotdot(_environ);
         return 1;
     }
 
     if (_strcmp(".", dir) == 0)
     {
-        // Handle special case: cd .
-        // It does nothing, just stays in the current directory
+        /* Handle special case: cd . */
+        /* It does nothing, just stays in the current directory*/
         return 1;
     }
 
-    // For all other cases, change to the specified directory
+    /* For all other cases, change to the specified directory*/
     cd_to(dir, _environ);
 
     return 1;

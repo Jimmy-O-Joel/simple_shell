@@ -19,8 +19,7 @@ int (*builtin_func[]) (char **args, char **_environ) = {
 int execute(char **args, char **_environ)
 {
 
-	int i;
-	int equal;
+	long unsigned int i;
     if (args[0] == NULL)
     {
         return 1;  /* Empty command */

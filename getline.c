@@ -42,7 +42,7 @@ void bring_line(char **lineptr, size_t *n, char *buffer, size_t j)
  */
 ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 {
-	unsigned int i;
+	signed int i;
 	static ssize_t input;
 	ssize_t retval;
 	char *buffer;

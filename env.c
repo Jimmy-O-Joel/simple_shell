@@ -60,7 +60,7 @@ char *_getenv(const char *name, char **_environ)
  * @datash: data relevant.
  * Return: 1 on success.
  */
-int _env(char **args, char **_environ)
+int _env(__attribute__((unused)) char **args, __attribute__((unused))char **_environ)
 {
 	int i, j;
 

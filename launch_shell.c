@@ -8,7 +8,7 @@
 
 int launch_shell(char **args)
 {
-    pid_t pid, wpid;
+    pid_t pid;
     int status;
 	path(args);
     pid = fork();
@@ -32,7 +32,7 @@ int launch_shell(char **args)
         /* Parent process */
         do
         {
-            wpid = waitpid(pid, &status, WUNTRACED);
+            waitpid(pid, &status, WUNTRACED);
         }
         while (!WIFEXITED(status) && !WIFSIGNALED(status));
     }
