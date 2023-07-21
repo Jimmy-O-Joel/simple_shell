@@ -10,7 +10,7 @@ int launch_shell(char **args)
 {
     pid_t pid, wpid;
     int status;
-
+	path(args);
     pid = fork();
 
     if (pid == 0)

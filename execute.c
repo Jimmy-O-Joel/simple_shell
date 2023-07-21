@@ -2,11 +2,12 @@
 
 /* Built-in command names and corresponding functions */
 
-const char *builtin_str[] = {"cd","exit","help"};
+const char *builtin_str[] = {"cd","exit","env"};
 
-int (*builtin_func[]) (char **) = {
+int (*builtin_func[]) (char **args, char **_environ) = {
     &cd_shell,
-    &exit_shell
+    &exit_shell,
+    &_env
 };
 
 /**
@@ -15,22 +16,20 @@ int (*builtin_func[]) (char **) = {
 *Return:
 */
 
-int execute(char **args)
+int execute(char **args, char **_environ)
 {
 
 	int i;
 	int equal;
-	path(args); /*searches in path for an exe */
     if (args[0] == NULL)
     {
         return 1;  /* Empty command */
     }
-
     for (i = 0; i < sizeof(builtin_str) / sizeof(char *); i++)
     {
         if (strcmp(builtin_str[i], args[0]) == 0)
         {
-            return (*builtin_func[i])(args);
+            return (*builtin_func[i])(args, _environ);
         }
 
     }

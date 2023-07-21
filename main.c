@@ -2,14 +2,16 @@
 
 /**
 *main - entry point of our program
-*
+*@ac: arguments
+*@av: argument vector
+*@env: environment
 *Return: Always 0
 */
 
 
-int main(int argc, char **argv)
+int main(int ac, char **av, char **env)
 {
-	prompt();
+	prompt(env);
 	return (0);
 
 }

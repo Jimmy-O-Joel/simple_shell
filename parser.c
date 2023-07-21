@@ -20,7 +20,7 @@ char **parser(char *line)
 		return (NULL);
 	}
 
-	token = strtok(line, " ");
+	token = _strtok(line, " ");
 	while (token != NULL)
 	{
 		token_holder[i] = token;
@@ -34,7 +34,7 @@ char **parser(char *line)
 				return (NULL);
 			}
 		}
-		token = strtok(NULL, " ");
+		token = _strtok(NULL, " ");
 	}
 
 	token_holder[i] = NULL;
