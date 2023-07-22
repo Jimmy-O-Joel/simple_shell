@@ -69,49 +69,45 @@ int cmp_chars(char str[], const char *delim)
  */
 char *_strtok(char *str, const char *delim)
 {
-    static char *last_token = NULL; /* Keep track of the last token*/
-    char *token; /* Store the token to be returned*/
-    int i, j;
+	char *last_token = NULL; /* Keep track of the last token*/
+	char *token; /* Store the token to be returned*/
+	int i, j;
 
-    /* If str is NULL, start from the last token*/
-    if (str == NULL)
-        str = last_token;
+	/* If str is NULL, start from the last token*/
+	if (str == NULL)
+		str = last_token;
 
-    /* If str is empty, return NULL*/
-    if (*str == '\0')
-        return NULL;
+	/* If str is empty, return NULL*/
+	if (*str == '\0')
+		return (NULL);
 
-    /* Find the start of the token*/
-    i = 0;
-    while (str[i] != '\0')
-    {
-        if (strchr(delim, str[i]) == NULL)
-            break;
-        i++;
-    }
+	/* Find the start of the token*/
+	i = 0;
+	while (str[i] != '\0')
+	{
+		if (strchr(delim, str[i]) == NULL)
+			break;
+		i++;
+	}
 
-    /* Find the end of the token*/
-    j = i + 1;
-    while (str[j] != '\0')
-    {
-        if (strchr(delim, str[j]) != NULL)
-            break;
-        j++;
-    }
+	/* Find the end of the token*/
+	j = i + 1;
+	while (str[j] != '\0')
+	{
+		if (strchr(delim, str[j]) != NULL)
+			break;
+		j++;
+	}
 
-    /* Allocate memory for the token*/
-    token = (char *)malloc(j - i + 1);
-    if (token == NULL)
-        return NULL;
+	token = (char *)malloc(j - i + 1);
+	if (token == NULL)
+		return (NULL);
 
-    /* Copy the token to the new buffer*/
-    strncpy(token, str + i, j - i);
-    token[j - i] = '\0';
+	strncpy(token, str + i, j - i);
+	token[j - i] = '\0';
+	last_token = str + j;
 
-    /* Update last_token for the next call*/
-    last_token = str + j;
-
-    return (token);
+	return (token);
 }
 
 /**

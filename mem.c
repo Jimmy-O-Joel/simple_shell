@@ -97,14 +97,15 @@ char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size)
  */
 void free_tokens(char **tokens)
 {
-    if (tokens)
-    {
-        int i = 0;
-        while (tokens[i])
-        {
-            free(tokens[i]);
-            i++;
-        }
-        free(tokens);
-    }
+	if (tokens)
+	{
+		int i = 0;
+
+		while (tokens[i])
+		{
+			free(tokens[i]);
+			i++;
+		}
+		free(tokens);
+	}
 }

@@ -9,7 +9,8 @@
 */
 
 
-int main(__attribute__((unused)) int ac, __attribute__((unused)) char **av, char **env)
+int main(__attribute__((unused)) int ac,
+		__attribute__((unused)) char **av, char **env)
 {
 	prompt(env);
 	return (0);

@@ -34,57 +34,51 @@ char *copy_info(char *name, char *value)
  */
 int set_env(const char *name, const char *value, char **_environ)
 {
-    char *new_env_var;
-    char *var_env;
-    size_t name_len, value_len;
-    int i;
+	char *new_env_var;
+	char *var_env;
+	size_t name_len, value_len;
+	int i;
 
-    if (name == NULL || value == NULL)
-    {
-        /* Invalid arguments, return failure */
-        return -1;
-    }
+	if (name == NULL || value == NULL)
+	{
+		/* Invalid arguments, return failure */
+		return (-1);
+	}
 
-    name_len = strlen(name);
-    value_len = strlen(value);
+	name_len = strlen(name);
+	value_len = strlen(value);
 
-    /* Allocate memory for the new environment variable*/
-    new_env_var = malloc(name_len + value_len + 2);
-    if (new_env_var == NULL)
-    {
-        perror("malloc");
-        return -1;
-    }
+	/* Allocate memory for the new environment variable*/
+	new_env_var = malloc(name_len + value_len + 2);
+	if (new_env_var == NULL)
+	{
+		perror("malloc");
+		return (-1);
+	}
 
-    /* Create the new environment variable string: name=value\0 */
-    snprintf(new_env_var, name_len + value_len + 2, "%s=%s", name, value);
+	/* Create the new environment variable string: name=value\0 */
+	snprintf(new_env_var, name_len + value_len + 2, "%s=%s", name, value);
+	for (i = 0; _environ[i] != NULL; i++)
+	{
+		var_env = _environ[i];
 
-    /* Find if the environment variable already exists */
-    for (i = 0; _environ[i] != NULL; i++)
-    {
-        var_env = _environ[i];
-
-        if (strncmp(var_env, name, name_len) == 0 && var_env[name_len] == '=')
-        {
-            /* Update the existing environment variable*/
-            free(_environ[i]);
-            _environ[i] = new_env_var;
-            return 1;
-        }
-    }
-
-    /* If the environment variable does not exist, add it to the environment8*/
-    _environ[i] = new_env_var;
-    _environ[i + 1] = NULL;
-
-    return 1;
+		if (strncmp(var_env, name, name_len) == 0 && var_env[name_len] == '=')
+		{
+			free(_environ[i]);
+			_environ[i] = new_env_var;
+			return (1);
+		}
+	}
+	_environ[i] = new_env_var;
+	_environ[i + 1] = NULL;
+	return (1);
 }
 
 
 /**
  * _setenv - compares env variables names with the name passed.
  * @args: arguments
- *
+ *@_environ: environment variable
  * Return: 1 on success.
  */
 int _setenv(char **args, char **_environ)

@@ -57,10 +57,12 @@ char *_getenv(const char *name, char **_environ)
 /**
  * _env - prints the evironment variables
  *
- * @datash: data relevant.
+ * @args: args
+ *@_environ: environment variables
  * Return: 1 on success.
  */
-int _env(__attribute__((unused)) char **args, __attribute__((unused))char **_environ)
+int _env(__attribute__((unused)) char **args,
+		__attribute__((unused))char **_environ)
 {
 	int i, j;
 

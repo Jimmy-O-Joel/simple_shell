@@ -2,7 +2,7 @@
 
 /**
 *prompt - UNIX interprator
-*
+*@_environ: environment variable
 *Return: void
 */
 

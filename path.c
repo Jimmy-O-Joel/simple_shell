@@ -12,17 +12,16 @@ int path(char **args)
     /* REtriving path directory using getenv */
 	char *path;
 	char *token;
-	char command_path [100];
+	char command_path[100];
 
 	path = getenv("PATH");
 
 	/* tokenize the path variale to otain individual directory paths */
 
 	token = strtok(path, ":");
-	while ( token != NULL)
+	while (token != NULL)
 	{
-		/* construct the full path of the command using the strcpy, strcat functions */
-		strcpy(command_path , token);
+		strcpy(command_path, token);
 		strcat(command_path, "/");
 		strcat(command_path, args[0]);
 
