@@ -69,7 +69,7 @@ int cmp_chars(char str[], const char *delim)
  */
 char *_strtok(char *str, const char *delim)
 {
-	static char *last_token = NULL; /* Keep track of the last token*/
+	static char *last_token; /* Keep track of the last token*/
 	char *token; /* Store the token to be returned*/
 	int i, j;
 
