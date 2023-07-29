@@ -34,15 +34,15 @@ void bring_line(char **lineptr, size_t *n, char *buffer, size_t j)
 	}
 }
 /**
- * _getline - Read inpt from stream
+ * get_line - Read inpt from stream
  * @lineptr: buffer that stores the input
  * @n: size of lineptr
  * @stream: stream to read from
  * Return: The number of bytes
  */
-ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
+ssize_t get_line(char **lineptr, size_t *n, FILE *stream)
 {
-	signed int i;
+	int i;
 	static ssize_t input;
 	ssize_t retval;
 	char *buffer;
@@ -71,7 +71,7 @@ ssize_t _getline(char **lineptr, size_t *n, FILE *stream)
 			break;
 		}
 		if (input >= BUFSIZE)
-			buffer = realloc(buffer, input + 1);
+			buffer = _realloc(buffer, input, input + 1);
 		buffer[input] = t;
 		input++;
 	}

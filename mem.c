@@ -89,23 +89,3 @@ char **_reallocdp(char **ptr, unsigned int old_size, unsigned int new_size)
 
 	return (newptr);
 }
-
-/**
- * free_tokens - Frees the memory allocated for tokens.
- * @tokens: Double pointer to the array of tokens.
- * Return: No return value (void).
- */
-void free_tokens(char **tokens)
-{
-	if (tokens)
-	{
-		int i = 0;
-
-		while (tokens[i])
-		{
-			free(tokens[i]);
-			i++;
-		}
-		free(tokens);
-	}
-}
